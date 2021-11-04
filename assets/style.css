@@ -94,7 +94,7 @@ button {
   cursor: pointer;
 }
 
-.play-button {
+.play-pause-button {
   margin-left: -9%;
   background: transparent;
 }
@@ -110,6 +110,7 @@ button {
   left: 27%;
 }
 
+
 .mute-unmute-button {
   display: flex;
   flex-direction: row;
@@ -118,7 +119,9 @@ button {
   margin-left: -15%;
   margin-right: 5%;
   cursor: pointer;
+  
 }
+
 
 .volume-slider {
   width: 100%;
@@ -165,19 +168,50 @@ button {
   justify-content: center;
   align-items: center;
   color: white;
-  transform: translateX(580%);
+  transform: translateX(1059%);
 }
 
 .playback-time {
+    position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-top: 0.5%;
   color: white;
-  font-size: 12px;
+  font-size: 12px;  
   margin-left: -21%;
   margin-bottom: 2px;
+}
+
+.playback-rate {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.button-settings:focus + .playback-rate {
+    opacity: 1;
+    pointer-events: all;
+    transition: all 345ms ease;
+}
+
+
+.btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    background-color: black;
+    opacity: 0.6;
+}
+
+.btn:hover {
+    opacity: 0.8;
 }
 
 .time-stamp {
@@ -188,6 +222,8 @@ button {
 }
 
 .fullscreen {
-  transform: translateX(382%);
-  margin-bottom: 5px;
+    transform: translateX(382%);
+    
 }
+
+
