@@ -15,8 +15,8 @@ let videos = [
   "video_clips/clip3.mp4",
   "video_clips/clip4.mp4",
 ];
-let i = 0;
 
+//#region windowLoad
 window.addEventListener("load", () => {
   if (!localStorage.getItem("volume")) {
     progressSlider.value = 50;
@@ -35,6 +35,7 @@ window.addEventListener("load", () => {
   }, 500);
   video.controls = false;
 });
+//#endregion
 
 //#region playPause
 const playPause = () => {
@@ -48,6 +49,8 @@ const playPause = () => {
       playPauseButton.querySelector("i").classList.add("fa-play");
   }
 };
+
+console.log(playPause);
 
 video.onended = function () {
   playPauseButton.querySelector("i").classList.remove("fa-pause"),
@@ -63,19 +66,32 @@ playPauseButton.addEventListener("click", (e) => {
 //#endregion
 
 //#region nextButton
-nextVideo.addEventListener("click", function () {
-  // video.src = videos[1];
-  if (video.src === `http://127.0.0.1:5501/video_clips/clip1.mp4`) {
-    video.src = `http://127.0.0.1:5501/video_clips/clip${i + 2}.mp4`;
-  } else if (video.src === `http://127.0.0.1:5501/video_clips/clip${i + 2}.mp4`)
-    video.src = `http://127.0.0.1:5501/video_clips/clip${i + 3}.mp4`;
-  else if (video.src === `http://127.0.0.1:5501/video_clips/clip${i + 3}.mp4`) {
-    video.src = `http://127.0.0.1:5501/video_clips/clip${i + 4}.mp4`;
-  } else {
-    video.src = videos[0];
-  }
-  video.play();
-  video.load();
+let i = 1;
+
+const nextVideoFor = function () {
+  //   // video.src = videos[1];
+  //   if (video.src === `http://127.0.0.1:5501/video_clips/clip1.mp4`) {
+  //     video.src = `http://127.0.0.1:5501/video_clips/clip${i + 2}.mp4`;
+  //   } else if (video.src === `http://127.0.0.1:5501/video_clips/clip${i + 2}.mp4`)
+  //     video.src = `http://127.0.0.1:5501/video_clips/clip${i + 3}.mp4`;
+  //   else if (video.src === `http://127.0.0.1:5501/video_clips/clip${i + 3}.mp4`) {
+  //     video.src = `http://127.0.0.1:5501/video_clips/clip${i + 4}.mp4`;
+  //   } else {
+  //     video.src = videos[0];
+  //   }
+  //   video.play();
+  //   video.load();
+  i++;
+  if (i === 5) i = 1;
+  let nextVideo = "video_clips/clip" + i + ".mp4";
+  video.src = nextVideo;
+};
+//#endregion
+
+nextVideo.addEventListener("click", (e) => {
+  e.preventDefault();
+  nextVideoFor();
+  playPause();
 });
 //#endregion
 
@@ -162,6 +178,7 @@ time.addEventListener("input", (e) => {
 });
 //#endregion
 
+//#region videTimeUpdate
 function videoTime() {
   let currentMinutes = Math.floor(video.currentTime / 60);
   let currentSeconds = Math.floor(video.currentTime - currentMinutes * 60);
@@ -186,6 +203,7 @@ video.addEventListener("loadedmetadata", () => {
   video.volume = 0.5;
   progressSlider.style.width = "50%";
 });
+//#endregion
 
 window.addEventListener("keydown", (e) => {
   if (e.code === "Space") {
@@ -198,6 +216,7 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
+//#region fullScreen
 const toggleFullscreen = () => {
   if (!document.fullscreenElement) {
     document.documentElement.requestFullscreen();
@@ -221,3 +240,4 @@ fullScreenButton.addEventListener("click", (e) => {
   e.preventDefault();
   toggleFullscreen();
 });
+//#endregion

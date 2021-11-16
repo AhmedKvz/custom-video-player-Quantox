@@ -13,6 +13,7 @@ body {
   background-color: black;
 }
 
+/************************ Player - controls ****************************/
 .player-box {
   position: relative;
 }
@@ -24,6 +25,7 @@ body {
   align-items: center;
 }
 
+/*************************** time range ******************************/
 .time-range {
   width: 100%;
   -webkit-appearance: none;
@@ -51,10 +53,11 @@ body {
   -webkit-appearance: none;
   appearance: none;
   background: white;
-  
+
   cursor: pointer;
   border-radius: 100%;
 }
+/*************************** time range end *********************************/
 
 .video-container {
   display: flex;
@@ -65,8 +68,9 @@ body {
 }
 
 .video-container:hover .player-controls {
-  transform: translateY(0);
+  transform: translateY(0%);
   display: flex;
+  opacity: 1;
 }
 
 .player-video {
@@ -74,6 +78,7 @@ body {
 }
 
 .player-controls {
+  opacity: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -94,8 +99,9 @@ button {
   cursor: pointer;
 }
 
+/**************** play, pause, forward, mute-unmute buttons ******************/
 .play-pause-button {
-  margin-left: -12%;
+  margin-left: -15%;
   background: transparent;
 }
 
@@ -104,12 +110,11 @@ button {
 }
 
 .forward-button {
-  margin-left: -21%;
+  margin-left: -23%;
   margin-right: 4%;
   position: absolute;
   left: 27%;
 }
-
 
 .mute-unmute-button {
   display: flex;
@@ -119,19 +124,19 @@ button {
   margin-left: -10%;
   margin-right: 5%;
   cursor: pointer;
-  
 }
 
 .sound-box {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-left: -29%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: -29%;
 }
 
+/************************** volume slider ***************************/
 .volume-slider {
-  width: 50%; 
+  width: 50%;
   -webkit-appearance: none;
   height: 5px;
   background: white;
@@ -169,72 +174,72 @@ button {
   cursor: pointer;
 }
 
+/************************** volume slider end ***************************/
+
 .time-box {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   color: white;
-  transform: translateX(1069%);
+  transform: translateX(1059%);
 }
 
 .playback-time {
-    position: relative;
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-top: 0.5%;
   color: white;
-  font-size: 12px;  
+  font-size: 12px;
   margin-left: -19%;
   margin-bottom: 2px;
   font-family: sans-serif;
 }
 
 .seperate-time {
-    margin-left: 5%;
-    margin-right: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
-.playback-rate {
-    position: absolute;
-    bottom: 40px;
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-    pointer-events: none;
-    /* background-color: red;
+/* .playback-rate {
+  position: absolute;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  /* background-color: red;
     width: 100%;
     max-width: 500px; */
-}
 
+/* 
 .button-settings:focus + .playback-rate {
-    opacity: 1;
-    pointer-events: all;
-    transition: all 345ms ease;
+  opacity: 1;
+  pointer-events: all;
+  transition: all 345ms ease;
 }
 
 .button-settings:focus {
-    transform: rotate(45deg);
-    transition: all 1s ease-in;
+  transform: rotate(45deg);
+  transition: all 1s ease-in;
 }
 
-
 .btn {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 2px;
-    background-color: black;
-    opacity: 0.6;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  background-color: black;
+  opacity: 0.6;
 }
 
 .btn:hover {
-    opacity: 0.8;
-}
-
+  opacity: 0.8;
+} */
 
 .time-stamp {
   display: flex;
@@ -243,19 +248,76 @@ button {
   margin-left: -126%;
 }
 
+/************************* fullScreen *******************/
 .fullscreen-button {
-    transform: translateX(382%);
-    
+  transform: translateX(624%);
 }
 
 .full-screen-player {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  cursor: pointer;
+}
+
+.full-screen-player + .video-container:hover .player-controls {
+  transform: translateY(0);
+  display: flex;
+}
+/************************* fullScreen end *******************/
+
+/******************** Media Queries *****************************/
+@media screen and (max-device-width: 920px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    transform: rotate(270deg);
+  }
+  .video-container {
+    width: 100%;
+    height: auto;
     cursor: pointer;
   }
 
-  .full-screen-player + .video-container:hover .player-controls {
-    transform: translateY(0);
-    display: flex;
+  .player-controls {
+    opacity: 1;
+  }
+
+  .player-video {
+    width: auto;
+    height: 90vw;
+    cursor: pointer;
+  }
+
+  .sound-box {
+    margin-left: -24%;
+  }
+
+  .fullscreen-button {
+    transform: translateX(499%);
+  }
+
+  .full-screen {
+    width: 90vh;
+    height: 100vw;
+    cursor: pointer;
+  }
 }
-  
+
+@media screen and (max-device-width: 920px) and (orientation: landscape) {
+  main {
+    transform: rotate(0deg);
+  }
+  .video-container {
+    width: 90vw;
+    height: auto;
+    cursor: pointer;
+  }
+
+  .player-video {
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+    cursor: pointer;
+  }
+}
