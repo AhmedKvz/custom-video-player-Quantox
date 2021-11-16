@@ -24,14 +24,13 @@ body {
   align-items: center;
 }
 
-input[type="range"] {
+.time-range {
   width: 100%;
   -webkit-appearance: none;
   appearance: none;
   height: 5px;
   background: white;
   background-repeat: repeat;
-  background-image: none;
   background-size: auto;
   border-radius: 5px;
   background-image: linear-gradient(#ce1141, #ce1141);
@@ -41,7 +40,7 @@ input[type="range"] {
   cursor: pointer;
 }
 
-.time-rane::-webkit-slider-thumb {
+.time-range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   background: white;
@@ -52,6 +51,7 @@ input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
   background: white;
+  
   cursor: pointer;
   border-radius: 100%;
 }
@@ -95,7 +95,7 @@ button {
 }
 
 .play-pause-button {
-  margin-left: -9%;
+  margin-left: -12%;
   background: transparent;
 }
 
@@ -116,15 +116,22 @@ button {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-left: -15%;
+  margin-left: -10%;
   margin-right: 5%;
   cursor: pointer;
   
 }
 
+.sound-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: -29%;
+}
 
 .volume-slider {
-  width: 100%;
+  width: 50%; 
   -webkit-appearance: none;
   height: 5px;
   background: white;
@@ -168,7 +175,7 @@ button {
   justify-content: center;
   align-items: center;
   color: white;
-  transform: translateX(1059%);
+  transform: translateX(1069%);
 }
 
 .playback-time {
@@ -180,8 +187,14 @@ button {
   margin-top: 0.5%;
   color: white;
   font-size: 12px;  
-  margin-left: -21%;
+  margin-left: -19%;
   margin-bottom: 2px;
+  font-family: sans-serif;
+}
+
+.seperate-time {
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .playback-rate {
@@ -191,12 +204,20 @@ button {
     flex-direction: column;
     opacity: 0;
     pointer-events: none;
+    /* background-color: red;
+    width: 100%;
+    max-width: 500px; */
 }
 
 .button-settings:focus + .playback-rate {
     opacity: 1;
     pointer-events: all;
     transition: all 345ms ease;
+}
+
+.button-settings:focus {
+    transform: rotate(45deg);
+    transition: all 1s ease-in;
 }
 
 
@@ -214,6 +235,7 @@ button {
     opacity: 0.8;
 }
 
+
 .time-stamp {
   display: flex;
   flex-direction: row;
@@ -221,9 +243,19 @@ button {
   margin-left: -126%;
 }
 
-.fullscreen {
+.fullscreen-button {
     transform: translateX(382%);
     
 }
 
+.full-screen-player {
+    width: 100vw;
+    height: 100vh;
+    cursor: pointer;
+  }
 
+  .full-screen-player + .video-container:hover .player-controls {
+    transform: translateY(0);
+    display: flex;
+}
+  
