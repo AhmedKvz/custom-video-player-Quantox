@@ -8,6 +8,11 @@ let currentTime = document.querySelector(".time-stamp");
 let durationVideo = document.querySelector(".time-stamp-fulltime");
 let progress = document.querySelector(".progress-slider");
 let fullScreenButton = document.querySelector(".fullscreen");
+let playBackRate = document
+  .querySelector(".playback-modal")
+  .querySelectorAll(".btn-rate");
+let buttonSettings = document.querySelector(".playback-speed-button");
+let playBackModal = document.querySelector(".playback-modal");
 let nextVideo = document.querySelector(".forward-button");
 let videos = [
   "video_clips/clip1.mp4",
@@ -169,6 +174,8 @@ video.addEventListener("timeupdate", (e) => {
   time.style.backgroundSize = (time.value / time.max) * 100 + "% 100%";
 });
 
+console.log(time.currentTime);
+
 time.addEventListener("input", (e) => {
   e.preventDefault();
   console.log(`${e.target.value}`);
@@ -180,10 +187,10 @@ time.addEventListener("input", (e) => {
 
 //#region videTimeUpdate
 function videoTime() {
-  let currentMinutes = Math.floor(video.currentTime / 60);
-  let currentSeconds = Math.floor(video.currentTime - currentMinutes * 60);
-  let durationMinutes = Math.floor(video.duration / 60);
-  let durationSeconds = Math.floor(video.duration - durationMinutes * 60);
+  let currentMinutes = Math.floor(video.currentTime / 120);
+  let currentSeconds = Math.floor(video.currentTime - currentMinutes * 120);
+  let durationMinutes = Math.floor(video.duration / 120);
+  let durationSeconds = Math.floor(video.duration - durationMinutes * 120);
 
   currentTime.innerHTML = `${currentMinutes}:${
     currentSeconds < 10 ? `0${currentSeconds}` : currentSeconds
@@ -216,8 +223,21 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
+//#region playbackRate
+buttonSettings.addEventListener("click", function () {
+  playBackModal.classList.toggle("playback-modal-visible");
+});
+
+playBackRate.forEach((option) =>
+  option.addEventListener("click", (e) => {
+    video.playbackRate = option.innerText;
+    playBackModal.classList.remove("playback-modal-visible");
+  })
+);
+
+//#endregion
 //#region fullScreen
-const toggleFullscreen = () => {
+function toggleFullscreen() {
   if (!document.fullscreenElement) {
     document.documentElement.requestFullscreen();
     video.classList.add("full-screen-player");
@@ -234,7 +254,7 @@ const toggleFullscreen = () => {
     fullScreenButton.querySelector("i").classList.add("fa-expand");
     fullScreenButton.querySelector("i").classList.remove("fa-compress");
   }
-};
+}
 
 fullScreenButton.addEventListener("click", (e) => {
   e.preventDefault();

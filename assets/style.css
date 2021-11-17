@@ -16,6 +16,9 @@ body {
 /************************ Player - controls ****************************/
 .player-box {
   position: relative;
+  width: auto;
+  max-width: 100%;
+  overflow-x: none;
 }
 
 .player-control-buttons {
@@ -42,17 +45,18 @@ body {
   cursor: pointer;
 }
 
-.time-range::-webkit-slider-thumb {
+.progress-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  background: white;
+  background: #ce1141;
+  border-radius: 100%;
   cursor: pointer;
 }
 
 .time-range::-moz-range-thumb {
   -webkit-appearance: none;
   appearance: none;
-  background: white;
+  background: #ce1141;
 
   cursor: pointer;
   border-radius: 100%;
@@ -65,6 +69,7 @@ body {
   align-items: center;
   width: 100%;
   max-width: 750px;
+  position: relative;
 }
 
 .video-container:hover .player-controls {
@@ -83,6 +88,8 @@ body {
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  max-width: 750px;
+  min-width: 350px;
   background: transparent;
   position: absolute;
   bottom: 0;
@@ -113,7 +120,7 @@ button {
   margin-left: -23%;
   margin-right: 4%;
   position: absolute;
-  left: 27%;
+  left: 30%;
 }
 
 .mute-unmute-button {
@@ -249,9 +256,6 @@ button {
 }
 
 /************************* fullScreen *******************/
-.fullscreen-button {
-  transform: translateX(624%);
-}
 
 .full-screen-player {
   width: 100vw;
@@ -264,6 +268,34 @@ button {
   display: flex;
 }
 /************************* fullScreen end *******************/
+
+.playback-modal {
+  display: none;
+}
+
+.playback-modal-visible {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: absolute;
+  background-color: gray;
+  opacity: 0.5;
+  bottom: 90%;
+  right: 0%;
+  width: 100%;
+  max-width: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.playback-speed-button {
+  margin-right: -5rem;
+}
+
+.playback-fullscreen {
+  margin-right: -5rem;
+}
 
 /******************** Media Queries *****************************/
 @media screen and (max-device-width: 920px) {
@@ -319,5 +351,35 @@ button {
     max-width: 600px;
     height: 100%;
     cursor: pointer;
+  }
+}
+
+@media screen and (max-device-width: 736px) {
+  .playback-fullscreen {
+    margin-right: -4rem;
+  }
+}
+
+@media screen and (max-device-width: 428px) {
+  .player-control-buttons {
+    max-width: 100%;
+    width: 355px;
+  }
+}
+
+@media screen and (max-device-width: 375px) {
+  .playback-fullscreen {
+    margin-right: -4rem;
+  }
+  .player-control-buttons {
+    max-width: 100%;
+    width: 299px;
+  }
+}
+
+@media screen and (max-device-width: 360px) {
+  .player-control-buttons {
+    max-width: 100%;
+    width: 280px;
   }
 }
