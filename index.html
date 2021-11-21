@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom video player</title>
+    <script
+      src="https://kit.fontawesome.com/56f86ace5e.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+
+  <body>
+    <main class="player-box">
+      <div class="video-container">
+        <video class="player-video viewer" src="video_clips/clip1.mp4"></video>
+
+        <div class="player-controls">
+          <div class="progress-slider">
+            <input class="time-range" type="range" min="0" max="100" />
+          </div>
+
+          <div class="player-control-buttons">
+            <button class="play-pause-button toggle" title="play-pause-button">
+              <i class="fas fa-play"></i>
+            </button>
+            <button
+              aria-label="pause"
+              class="pause-button"
+              title="pause"
+              type="button"
+            >
+              <i class="fas fa-pause"></i>
+            </button>
+
+            <div class="sound-box">
+              <button aria-label="forward" class="forward-button">
+                <i class="fas fa-step-forward"></i>
+              </button>
+
+              <button
+                aria-label="volume"
+                title="volume"
+                class="mute-unmute-button"
+              >
+                <i class="fas fa-volume-up"></i>
+              </button>
+              <input
+                type="range"
+                name="volume"
+                class="volume-slider"
+                min="0"
+                max="100"
+              />
+            </div>
+
+            <div class="playback-modal">
+              <div>
+                <button class="btn-rate">0.5</button>
+              </div>
+              <div>
+                <button class="btn-rate">0.75</button>
+              </div>
+              <div>
+                <button class="btn-rate">1.0</button>
+              </div>
+              <div>
+                <button class="btn-rate">1.5</button>
+              </div>
+              <div>
+                <button class="btn-rate">2.0</button>
+              </div>
+            </div>
+
+            <div class="playback-time">
+              <div class="time-stamp">00.00</div>
+              <span class="seperate-time">/</span>
+              <div class="time-stamp-fulltime">00.00</div>
+            </div>
+
+            <div class="playback-fullscreen">
+              <button class="playback-speed-button">
+                <i class="fas fa-cog"></i>
+              </button>
+
+              <button class="fullscreen-button fullscreen">
+                <i class="fas fa-expand"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="assets/script.js"></script>
+  </body>
+</html>
